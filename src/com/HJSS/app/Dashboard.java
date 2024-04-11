@@ -1,9 +1,10 @@
 package com.HJSS.app;
 
 import com.HJSS.utils.Utils;
-
+import com.HJSS.service.BookingService;
+import com.HJSS.Model.*;
 public class Dashboard {
-
+	BookingService bookingService= new BookingService();
 	public void start() {
 		System.out.println("Wlcome to The Hatfield Junior Swimming School Dashboard");
 		System.out.println("Please choose");
@@ -50,7 +51,7 @@ public class Dashboard {
 		int choice= Utils.getChoice();
 		
 		switch(choice) {
-		case 1:searchByDay();
+		case 1:bookingService.getSlotsByDay(0).forEach(Slot::displaySolt);
 				break;
 				
 		default: System.out.println("invalid option please try again");

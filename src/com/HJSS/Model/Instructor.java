@@ -7,6 +7,11 @@ public class Instructor {
 	public int getId() {
 		return id;
 	}
+	public Instructor(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}
