@@ -4,8 +4,6 @@ import java.util.Date;
 
 public class Slot {
 
-	private int id;
-	private Date startTime;
 	public Slot(int id, Date startTime, Date endTime, Instructor instructor, Student student) {
 		super();
 		this.id = id;
@@ -14,6 +12,8 @@ public class Slot {
 		this.instructor = instructor;
 		this.student = student;
 	}
+	private int id;
+	private Date startTime;
 	private Date endTime;
 	private Instructor instructor;
 	private Student student;
@@ -49,7 +49,7 @@ public class Slot {
 	}
 	
 	public void displaySolt() {
-		System.out.println(this.id+" "+this.getStartTime().toLocaleString()+" "+this.getInstructor().getName());
+		System.out.println(this.id+" \t\t "+new Date().toString()+" \t\t "+this.getInstructor().getName()+ " \t\t"+ (this.getStudent()==null?"free":"booked"));
 	}
 	
 	

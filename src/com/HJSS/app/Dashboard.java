@@ -2,11 +2,14 @@ package com.HJSS.app;
 
 import com.HJSS.utils.Utils;
 import com.HJSS.service.BookingService;
+
+import java.util.List;
+
 import com.HJSS.Model.*;
 public class Dashboard {
 	BookingService bookingService= new BookingService();
 	public void start() {
-		System.out.println("Wlcome to The Hatfield Junior Swimming School Dashboard");
+		System.out.println("Welcome to The Hatfield Junior Swimming School Dashboard");
 		System.out.println("Please choose");
 		System.out.println("1. Book Solt/ Check Availability");
 		System.out.println("2. Register as Student");
@@ -47,14 +50,36 @@ public class Dashboard {
 		System.out.println("5. Thursday");
 		System.out.println("6. Friday");
 		System.out.println("7. Saturday");
+		System.out.println("8. Go Back to Search menu");
+		System.out.println("9. Go to Main Manu");
+		System.out.println("10. Exit");
 		System.out.println("please enter you choice: ");
 		int choice= Utils.getChoice();
 		
 		switch(choice) {
-		case 1:bookingService.getSlotsByDay(0).forEach(Slot::displaySolt);
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+			List<Slot> slots= bookingService.getSlotsByDay(choice);
+			if(slots.size() <1) {
+				System.out.println("Sorry Slots are ot available !, please try other day");
+				searchByDay();
+			}
+			System.out.println("id \t\t Start Date \t\t Instructor Name \t\t status");
+			slots.forEach(Slot::displaySolt);
 				break;
-				
-		default: System.out.println("invalid option please try again");
+		case 8: bookSlot();
+		case 9: start();
+		case 10:
+			System.out.println("Exiting !!! Thank you visit again!!!");
+			System.exit(0);	
+		default:
+			System.out.println("invalid option please try again");
+			searchByDay();
 		}
 	}
 }
